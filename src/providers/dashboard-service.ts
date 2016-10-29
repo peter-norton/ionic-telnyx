@@ -12,11 +12,14 @@ export class DashboardService {
     return Observable
       .interval(3000)
       .flatMap(() => {
-        return this.httpClient.get('https://api-gateway.telnyx.com/call_stats')
-          .then(
-            data => { return data; }
-          );
+        return this.getCallStats();
       });
+  }
+
+  getCallStats() {
+    return this.httpClient.get('https://api-gateway.telnyx.com/call_stats').then(
+      data => data
+    );
   }
 
 }

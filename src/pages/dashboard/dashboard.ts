@@ -18,17 +18,21 @@ export class Dashboard {
   ) {}
 
   ionViewDidLoad() {
-    this.callStatsPoll = this.dashboardService.pollCallStats()
-      .subscribe(
-        data => {
-          this.loadingCallStats = false;
-          this.callStats = data;
-        }
-      );
+    this.dashboardService.getCallStats().then(
+      data => this.setCallStats(data)
+    );
+    this.callStatsPoll = this.dashboardService.pollCallStats().subscribe(
+      data => this.setCallStats(data)
+    );
   }
 
   ionViewDidLeave() {
     this.callStatsPoll.unsubscribe();
+  }
+
+  setCallStats(data) {
+    this.loadingCallStats = false;
+    this.callStats = data;
   }
 
 }
