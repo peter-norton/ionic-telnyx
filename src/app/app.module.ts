@@ -1,9 +1,15 @@
 import { NgModule } from '@angular/core';
 import { IonicApp, IonicModule } from 'ionic-angular';
 import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
+
 import { MyApp } from './app.component';
-import { Page1 } from '../pages/page1/page1';
+import { Login } from '../pages/login/login';
+import { Dashboard } from '../pages/dashboard/dashboard';
 import { Page2 } from '../pages/page2/page2';
+
+import { HttpClient } from '../providers/http-client';
+import { LoginService } from '../providers/login-service';
+import { DashboardService } from '../providers/dashboard-service';
 
 const cloudSettings: CloudSettings = {
   'core': {
@@ -14,7 +20,8 @@ const cloudSettings: CloudSettings = {
 @NgModule({
   declarations: [
     MyApp,
-    Page1,
+    Login,
+    Dashboard,
     Page2
   ],
   imports: [
@@ -24,9 +31,14 @@ const cloudSettings: CloudSettings = {
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    Page1,
+    Login,
+    Dashboard,
     Page2
   ],
-  providers: []
+  providers: [
+    HttpClient,
+    LoginService,
+    DashboardService
+  ]
 })
 export class AppModule {}

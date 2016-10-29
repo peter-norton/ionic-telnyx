@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Dashboard</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card>
+    <ion-card-header>
+      Inbound Calls
+    </ion-card-header>
+    <ion-card-content>
+      <span class="font-lg" color="primary">
+        <ion-spinner name="crescent" color="light" *ngIf="loadingCallStats"></ion-spinner>
+        {{callStats.inbound}} <ion-icon name="arrow-round-down"></ion-icon>
+      </span>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      Outbound Calls
+    </ion-card-header>
+    <ion-card-content>
+      <span class="font-lg" color="primary">
+        <ion-spinner name="crescent" color="light" *ngIf="loadingCallStats"></ion-spinner>
+        {{callStats.outbound}} <ion-icon name="arrow-round-up"></ion-icon>
+      </span>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

@@ -14,3 +14,24 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+.toolbar-background {
+  background-color: #070f16;
+}
+
+.toolbar-title {
+  color: #aab2bd;
+}
+
+ion-spinner {
+  width: 40px;
+  height: 40px;
+}
+
+.font-lg {
+  font-size: 5rem;
+}
+
+.font-xl {
+  font-size: 10rem;
+}
