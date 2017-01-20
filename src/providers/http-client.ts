@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers } from '@angular/http';
-import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
+
+import { SecureStorage } from 'ionic-native';
 
 @Injectable()
 export class HttpClient {
+  secureStorage: SecureStorage;
   user;
   token;
 
@@ -26,6 +28,25 @@ export class HttpClient {
   setHeaders(args) {
     this.user = args.user;
     this.token = args.token;
+
+    this.secureStorage = new SecureStorage();
+    this.secureStorage.create('ionic_telnyx')
+      .then(
+        () => {
+          this.secureStorage.set('user', args.user)
+            .then(
+              data => console.log(data),
+              error => console.log(error)
+          );
+
+          this.secureStorage.set('token', args.token)
+            .then(
+              data => console.log(data),
+              error => console.log(error)
+          );
+        },
+        error => console.log(error)
+    );
   }
 
   get(url) {
